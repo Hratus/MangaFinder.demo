@@ -37,7 +37,7 @@ public class MangaController {
     @ResponseStatus(HttpStatus.OK)
     @Tag(name = "Retorna um usuaio pelo ID", description = "Com base no id retorna as descrições de um manga")
     public Manga GetMangaById(@PathVariable Long id){
-        return mangaService.FindById(id);
+        return mangaService.FindOne(id);
 
     }
 

@@ -28,4 +28,28 @@ public class Scan {
     //Uso incorrerto de @Override pode gerar problemas com o hibernate
 
 
+
+    public Long getId_scan() {
+        return id_scan;
+    }
+
+    public void setId_scan(Long id_scan) {
+        this.id_scan = id_scan;
+    }
+
+    public String getName_scan() {
+        return name_scan;
+    }
+
+    public void setName_scan(String name_scan) {
+        this.name_scan = name_scan;
+    }
+
+    public String getUrl_scan() {
+        return url_scan;
+    }
+
+    public void setUrl_scan(String url_scan) {
+        this.url_scan = url_scan;
+    }
 }

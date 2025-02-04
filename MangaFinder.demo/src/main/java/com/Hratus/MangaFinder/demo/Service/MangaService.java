@@ -29,7 +29,7 @@ public class MangaService {
     }
 
     //Acha um manga pelo ID dele, e caso não exista devolve aquela mensagem;
-    public Manga FindById (Long id){
+    public Manga FindOne (Long id){
 
         return repository_manga.findById(id).orElseThrow(() -> new MangaNotFoundExeption("Manga not found" + id));
 
@@ -43,7 +43,7 @@ public class MangaService {
     //Atualiza um manga pelo Id e depois salva utilizando Save_manga
     public Manga UpdateById (Long id, Manga manga_update ){
         //Variavel de "Transição", para receber e passar para a outra (manga_update)
-        Manga manga_up_to_date = FindById(id);
+        Manga manga_up_to_date = FindOne(id);
         //EM caso de erro substituir por esse
         //repository_manga.findById(id).orElseThrow(() -> new RuntimeException("Manga not found"));
 
@@ -65,7 +65,7 @@ public class MangaService {
     //transação atomica, tudo ou nada
     @Transactional
     //Deleta um manga com base no id
-    public  Manga DeleteById (Long id){
+    public Manga DeleteById (Long id){
         Manga manga_to_delete = repository_manga.findById(id).orElseThrow(() -> new MangaNotFoundExeption("Manga not found"));
 
         repository_manga.delete(manga_to_delete);
