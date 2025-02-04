@@ -21,8 +21,8 @@ public class Scan {
     private String name_scan;
     private String url_scan;
 
-    @ManyToOne//relacionamento N:1 com Manga. sendo muitos Scans para 1 manga
-    private Manga manga;
+    //@ManyToOne//relacionamento N:1 com Manga. sendo muitos Scans para 1 manga
+    //private Manga manga;
 
     //Classes marcadas com @Entity podem ter construtores vazios, exeto que tambem estejam marcados com @NoArgsConstructor
     //Uso incorrerto de @Override pode gerar problemas com o hibernate

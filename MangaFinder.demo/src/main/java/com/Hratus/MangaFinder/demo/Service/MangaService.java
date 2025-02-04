@@ -2,50 +2,48 @@ package com.Hratus.MangaFinder.demo.Service;
 
 import com.Hratus.MangaFinder.demo.Domain.Manga;
 import com.Hratus.MangaFinder.demo.Exeptions.MangaNotFoundExeption;
-import com.Hratus.MangaFinder.demo.Repository.Manga_repo;
+import com.Hratus.MangaFinder.demo.Repository.MangaRepository;
 import jakarta.transaction.Transactional;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.logging.Logger;
 
 //Essa camada representa a logica de negocio, servindo para evitar que ela seja feita na controller e ao mesmo tempo mediando a DTo
 @Service
-public class Service_manga {
+public class MangaService {
 
 
 
-    private Manga_repo repository_manga;
+    private final MangaRepository repository_manga;
 
     //injeção de dependencia
     @Autowired
-    public Service_manga(Manga_repo repository_manga) {
+    public MangaService(MangaRepository repository_manga) {
         this.repository_manga = repository_manga;
     }
 
     //Lista todos os mangas disponiveis
-    public List<Manga> List_all_mangas() {
+    public List<Manga> ListAll() {
         //.findAll é um metodo pronto da repository, mas posso criar novos para atender as demandas da regras de negocio
         return repository_manga.findAll();
     }
 
     //Acha um manga pelo ID dele, e caso não exista devolve aquela mensagem;
-    public Manga Find_manga_by_id (Long id){
+    public Manga FindById (Long id){
 
         return repository_manga.findById(id).orElseThrow(() -> new MangaNotFoundExeption("Manga not found" + id));
 
     }
 
     //Salva o manga no banco
-    public Manga Save_manga (Manga manga){
+    public Manga SaveManga (Manga manga){
         return repository_manga.save(manga);
     }
 
     //Atualiza um manga pelo Id e depois salva utilizando Save_manga
-    public Manga Update_manga_by_id (Long id, Manga manga_update ){
+    public Manga UpdateById (Long id, Manga manga_update ){
         //Variavel de "Transição", para receber e passar para a outra (manga_update)
-        Manga manga_up_to_date = Find_manga_by_id(id);
+        Manga manga_up_to_date = FindById(id);
         //EM caso de erro substituir por esse
         //repository_manga.findById(id).orElseThrow(() -> new RuntimeException("Manga not found"));
 
@@ -60,14 +58,14 @@ public class Service_manga {
             manga_up_to_date.setGenre_manga( manga_update.getGenre_manga() );
             manga_up_to_date.setNumber_of_chapters( manga_update.getNumber_of_chapters() );
 
-            return Save_manga(manga_up_to_date);
+            return SaveManga(manga_up_to_date);
         //Poderia usar o repository_manga.save ao invez do Save_manga
         //return Save_manga(manga_up_to_date);
     }
     //transação atomica, tudo ou nada
     @Transactional
     //Deleta um manga com base no id
-    public  Manga Delete_manga_by_id (Long id){
+    public  Manga DeleteById (Long id){
         Manga manga_to_delete = repository_manga.findById(id).orElseThrow(() -> new MangaNotFoundExeption("Manga not found"));
 
         repository_manga.delete(manga_to_delete);
@@ -76,7 +74,7 @@ public class Service_manga {
     }
 
     //Deleta todos os mangas disponiveis
-    public void Delete_all_mangas(){
+    public void DeleteAllData(){
 
         repository_manga.deleteAll();
 

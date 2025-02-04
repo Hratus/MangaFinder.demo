@@ -1,4 +1,4 @@
 package com.Hratus.MangaFinder.demo.DTO;
 
-public record Dto_manga() {
+public record ChapterDto() {
 }
