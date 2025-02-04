@@ -67,7 +67,7 @@ public class Service_manga {
     //transação atomica, tudo ou nada
     @Transactional
     //Deleta um manga com base no id
-    public Manga Delete_manga_by_id (Long id){
+    public  Manga Delete_manga_by_id (Long id){
         Manga manga_to_delete = repository_manga.findById(id).orElseThrow(() -> new MangaNotFoundExeption("Manga not found"));
 
         repository_manga.delete(manga_to_delete);

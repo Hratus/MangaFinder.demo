@@ -23,10 +23,10 @@ public class Manga {
     private String genre_manga;
     private int number_of_chapters;
 
-    @OneToOne// ainda pegando o jeito, mas seria cada cap pertence a 1 e somente 1 manga
-    private Chapter chapter;
-    @ManyToOne// ainda pegando, seriam varios mangas pertencem a 1 e somente 1 scan
-    private Scan scan;
+    //@OneToOne// ainda pegando o jeito, mas seria cada cap pertence a 1 e somente 1 manga
+   // private Chapter chapter;
+    //@ManyToOne// ainda pegando, seriam varios mangas pertencem a 1 e somente 1 scan
+   // private Scan scan;
 
     //Getters e settersl, por alguma razão o lombok não esta funcionando para isso
     public Long getId_manga() {
@@ -85,19 +85,4 @@ public class Manga {
         this.number_of_chapters = number_of_chapters;
     }
 
-    public Chapter getChapter() {
-        return chapter;
-    }
-
-    public void setChapter(Chapter chapter) {
-        this.chapter = chapter;
-    }
-
-    public Scan getScan() {
-        return scan;
-    }
-
-    public void setScan(Scan scan) {
-        this.scan = scan;
-    }
 }
