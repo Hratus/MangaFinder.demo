@@ -1,9 +1,8 @@
 package com.Hratus.MangaFinder.demo.Service;
 
-import com.Hratus.MangaFinder.demo.Domain.Manga;
 import com.Hratus.MangaFinder.demo.Domain.Scan;
 import com.Hratus.MangaFinder.demo.Exeptions.ScanNotFoundExeption;
-import com.Hratus.MangaFinder.demo.Repository.ScanRepository;
+import com.Hratus.MangaFinder.demo.Repository.ScanRepoRepo;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,14 +12,14 @@ import java.util.List;
 @Service
 public class ScanService {
 
-    private final ScanRepository scanRepository;
+    private final ScanRepoRepo scanRepository;
     //Injeção de dependencia
     @Autowired
-    public ScanService(ScanRepository scanRepository) {
+    public ScanService(ScanRepoRepo scanRepository) {
         this.scanRepository = scanRepository;
     }
     //Lista todos os Scans
-    public List<Scan> ListAll(Manga manga){
+    public List<Scan> ListAllScans() {
         return scanRepository.findAll();
     }
     //Retorna um scan pelo ID

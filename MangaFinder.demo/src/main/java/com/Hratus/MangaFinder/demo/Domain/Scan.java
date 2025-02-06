@@ -1,11 +1,12 @@
 package com.Hratus.MangaFinder.demo.Domain;
 
 import jakarta.persistence.*;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.relational.core.mapping.Table;
+
 //Entity é uma anotation pra mapear entidades do banco de dados
 @Entity(name = "scan")
 @Table(name= "scan")
