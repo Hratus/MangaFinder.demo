@@ -61,6 +61,4 @@ public class ScanController {
     public void DeleteAllScans(){
         scanService.DeleteAll();
     }
-
-
 }

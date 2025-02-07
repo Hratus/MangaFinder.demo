@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity(name="manga")//Indica que essa classe é uma entidade de Banco de Dados
 @Table(name="manga")//Define o nome da tabela
 @Getter
@@ -16,6 +18,8 @@ public class Manga {
     @Id//chave primaria de Manga
     @GeneratedValue(strategy = GenerationType.IDENTITY)//Gera automaticamente os IDs
     private Long id_manga;
+
+
     private String title_manga;
     private String author_manga;
     private String description_manga;
@@ -23,10 +27,20 @@ public class Manga {
     private String genre_manga;
     private int number_of_chapters;
 
-    //@OneToOne// ainda pegando o jeito, mas seria cada cap pertence a 1 e somente 1 manga
-   // private Chapter chapter;
-    //@ManyToOne// ainda pegando, seriam varios mangas pertencem a 1 e somente 1 scan
-   // private Scan scan;
+    @OneToMany(mappedBy = "manga", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Chapter> chapters;
+    public Manga(List<Chapter> chapters) {
+        this.chapters = chapters;
+    }
+
+    public List<Chapter> getChapters() {
+        return chapters;
+    }
+
+    public void setChapters(List<Chapter> chapters) {
+        this.chapters = chapters;
+    }
+
 
     //Getters e settersl, por alguma razão o lombok não esta funcionando para isso
     public Long getId_manga() {
