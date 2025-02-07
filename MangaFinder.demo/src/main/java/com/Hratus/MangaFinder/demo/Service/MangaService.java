@@ -13,9 +13,7 @@ import java.util.List;
 public class MangaService {
 
 
-
     private final MangaRepository repository_manga;
-
     //injeção de dependencia
     @Autowired
     public MangaService(MangaRepository repository_manga) {
