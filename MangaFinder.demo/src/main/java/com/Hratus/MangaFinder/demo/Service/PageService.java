@@ -22,26 +22,9 @@ public class PageService {
          this.pageRepository = pageRepository;
      }
 
-    private final List<Page> pages = new ArrayList<>();  // Lista de páginas
 
-    public List<Page> addPage(Page page, String url) throws IOException {
-        OkHttpClient client = new OkHttpClient();
 
-        Request request = new Request.Builder().url(url).build();
-        Response response = client.newCall(request).execute();
-        //Adicionar mais exeptions para tratar melhor de erros
-        if (response.isSuccessful() && response.body() != null) {
-            byte[] imageBytes = response.body().bytes(); // Obtém os bytes da imagem
-
-            // Define a URL da imagem no objeto Page
-            page.setImageData(imageBytes);
-            page.setImageUrl(url);
-            pages.add(page); // Adiciona a página à lista
-            System.out.println("Imagem adicionada com sucesso!");
-        }
-        pageRepository.save(page);
-        return pages; // Retorna a lista atualizada
     }
 
 
-}
+

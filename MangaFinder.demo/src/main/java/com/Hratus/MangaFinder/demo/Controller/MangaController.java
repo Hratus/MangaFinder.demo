@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//Leia a linha de comentario da classe ChapterController
+///Leia a linha de comentario da classe ChapterController
 @RestController
 @RequestMapping("/mangas")
 public class MangaController {

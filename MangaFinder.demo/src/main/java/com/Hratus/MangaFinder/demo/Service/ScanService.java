@@ -13,16 +13,16 @@ import java.util.List;
 public class ScanService {
 
     private final ScanRepoRepo scanRepository;
-    //Injeção de dependencia
+    ///Injeção de dependencia
     @Autowired
     public ScanService(ScanRepoRepo scanRepository) {
         this.scanRepository = scanRepository;
     }
-    //Lista todos os Scans
+    ///Lista todos os Scans
     public List<Scan> ListAllScans() {
         return scanRepository.findAll();
     }
-    //Retorna um scan pelo ID
+    ///Retorna um scan pelo ID
     public Scan FindOne(Long id){
         return scanRepository.findById(id).orElseThrow(() -> new ScanNotFoundExeption("Scan Not Found"));
     }
@@ -31,7 +31,7 @@ public class ScanService {
 
         return scanRepository.save(scan);
     }
-    //Atualiza os dados de um scan
+    ///Atualiza os dados de um scan
     public Scan UpdateOne(Long id, Scan scanUpdate){
         Scan scan = FindOne(id);
 
@@ -39,14 +39,14 @@ public class ScanService {
         scan.setUrl_scan(scanUpdate.getUrl_scan());
         return SaveScan(scan);
     }
-    //Deleta um scan
+    ///Deleta um scan
     @Transactional
     public Scan DeleteOne(Long id){
         Scan scan = FindOne(id);
        scanRepository.delete(scan);
        return scan;
     }
-    //Deleta todos os scans
+    ///Deleta todos os scans
     @Transactional
     public void DeleteAll(){
         scanRepository.deleteAll();

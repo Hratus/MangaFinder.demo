@@ -9,7 +9,7 @@ import lombok.Setter;
 import java.util.List;
 
 
-//PARA EXPLICAÇÃO DAS @ LEIA AS CLASSES SCAN OU MANGA
+///PARA EXPLICAÇÃO DAS @ LEIA AS CLASSES SCAN OU MANGA
 @Entity(name = "chapter")
 @Table(name= "chapter")
 @Getter @Setter
@@ -21,10 +21,12 @@ public class Chapter {
     private Long chapterId;
     private String chapterTitle;
     private Double chapterNumber;
+    private byte[] imageData;
+    private String imageUrl;
 
-    // cascade = CascadeType.ALL Permite que, ao excluir um capítulo, todas as páginas associadas também sejam excluídas.7
-    //@OneToMany(mappedBy = "chapter")Define a relação 1:N com Page, onde um capítulo tem várias páginas.
-    //orphanRemoval = true Remove automaticamente páginas que não estão mais associadas a nenhum capítulo.
+    /// cascade = CascadeType.ALL Permite que, ao excluir um capítulo, todas as páginas associadas também sejam excluídas.7
+    ///@OneToMany(mappedBy = "chapter")Define a relação 1:N com Page, onde um capítulo tem várias páginas.
+    ///orphanRemoval = true Remove automaticamente páginas que não estão mais associadas a nenhum capítulo.
     @OneToMany(mappedBy = "chapter", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Page> pages;
 

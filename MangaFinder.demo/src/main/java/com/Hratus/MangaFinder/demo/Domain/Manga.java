@@ -11,11 +11,11 @@ import java.util.List;
 @Entity(name="manga")//Indica que essa classe é uma entidade de Banco de Dados
 @Table(name="manga")//Define o nome da tabela
 @Getter
-@Setter//Gera automaticamente os Getters e Setters
-@NoArgsConstructor//Gera um Construtor sem argumentos
-@AllArgsConstructor//Gera um Construtor com argumentos
+@Setter///Gera automaticamente os Getters e Setters
+@NoArgsConstructor///Gera um Construtor sem argumentos
+@AllArgsConstructor///Gera um Construtor com argumentos
 public class Manga {
-    @Id//chave primaria de Manga
+    @Id///chave primaria de Manga
     @GeneratedValue(strategy = GenerationType.IDENTITY)//Gera automaticamente os IDs
     private Long id_manga;
 
@@ -42,7 +42,7 @@ public class Manga {
     }
 
 
-    //Getters e settersl, por alguma razão o lombok não esta funcionando para isso
+    ///Getters e settersl, por alguma razão o lombok não esta funcionando para isso
     public Long getId_manga() {
         return id_manga;
     }

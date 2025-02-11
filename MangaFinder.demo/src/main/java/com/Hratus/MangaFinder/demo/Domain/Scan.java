@@ -7,13 +7,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-//Entity é uma anotation pra mapear entidades do banco de dados
+///Entity é uma anotation pra mapear entidades do banco de dados
 @Entity(name = "scan")
 @Table(name= "scan")
 @Getter @Setter
-//Gera um construtor sem arguementos graças ao Lombok(necessario para entidades JPA)
+///Gera um construtor sem arguementos graças ao Lombok(necessario para entidades JPA)
 @NoArgsConstructor
-//gera um construtor com arguemntos graças ao lomboknecessario para entidades JPA)
+///gera um construtor com arguemntos graças ao lomboknecessario para entidades JPA)
 @AllArgsConstructor
 public class Scan {
     @Id
@@ -22,11 +22,11 @@ public class Scan {
     private String name_scan;
     private String url_scan;
 
-    //@ManyToOne//relacionamento N:1 com Manga. sendo muitos Scans para 1 manga
-    //private Manga manga;
+    ///@ManyToOne//relacionamento N:1 com Manga. sendo muitos Scans para 1 manga
+    ///private Manga manga;
 
-    //Classes marcadas com @Entity podem ter construtores vazios, exeto que tambem estejam marcados com @NoArgsConstructor
-    //Uso incorrerto de @Override pode gerar problemas com o hibernate
+    ///Classes marcadas com @Entity podem ter construtores vazios, exeto que tambem estejam marcados com @NoArgsConstructor
+    ///Uso incorrerto de @Override pode gerar problemas com o hibernate
 
 
 
